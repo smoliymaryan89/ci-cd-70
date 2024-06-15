@@ -22,7 +22,7 @@ jobs:
           cd ci-cd-70
 
       - name: Download dependencies
-        run: mvn install
+        run: mvn dependency:resolve
 
       - name: Create a project build
         run: mvn clean install
