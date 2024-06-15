@@ -17,7 +17,9 @@ jobs:
           java-version: "21"
 
       - name: Clone the project
-        run: git clone https://github.com/smoliymaryan89/ci-cd-70.git
+        run: |
+          git clone https://github.com/smoliymaryan89/ci-cd-70.git
+          cd ci-cd-70
 
       - name: Download dependencies
         run: mvn install
