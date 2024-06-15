@@ -11,21 +11,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/setup-java@v4
+      - name: Setup JAVA
+        uses: actions/setup-java@v4
         with:
           distribution: "microsoft"
           java-version: "21"
 
-      - name: Clone the project
-        run: |
-          git clone https://github.com/smoliymaryan89/ci-cd-70.git
-          cd ci-cd-70
-
       - name: Download dependencies
-        run: mvn dependency:resolve
+        run: "mvn compile"
 
       - name: Create a project build
-        run: mvn clean install
+        run: "mvn package -DskipTests"
 
       - name: Run tests
-        run: mvn test
+        run: "mvn test"
