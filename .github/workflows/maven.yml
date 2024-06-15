@@ -17,6 +17,9 @@ jobs:
           distribution: "microsoft"
           java-version: "21"
 
+      - name: Checkout code
+        run: actions/checkout@v4
+
       - name: Download dependencies
         run: "mvn compile"
 
