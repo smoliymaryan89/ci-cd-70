@@ -1,0 +1,29 @@
+name: java-workflow
+
+on:
+  push:
+    branches: ["main"]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/setup-java@v4
+        with:
+          distribution: "microsoft"
+          java-version: "21"
+
+      - name: Clone the project
+        run: git clone https://github.com/smoliymaryan89/ci-cd-70.git
+
+      - name: Download dependencies
+        run: mvn install
+
+      - name: Create a project build
+        run: mvn clean install
+
+      - name: Run tests
+        run: mvn test
